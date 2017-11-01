@@ -26,14 +26,18 @@ If you want a **new** instance of an object, i.e. you want the object manager to
    </config>
 ```
 
-_magento/framework/ObjectManager/Factory/AbstractFactory.php_
-protected function resolveArgument
+see _magento/framework/ObjectManager/Factory/AbstractFactory.php_
+
 ```
-if ($isShared) {
-                $argument = $this->objectManager->get($argumentType);
-            } else {
-                $argument = $this->objectManager->create($argumentType);
-            }
+protected function resolveArgument(&$argument, $paramType, $paramDefault, $paramName, $requestedType) {
+          .....
+          if ($isShared) {
+                    $argument = $this->objectManager->get($argumentType);
+                } else {
+                    $argument = $this->objectManager->create($argumentType);
+          }
+          .....
+     }  
 ```
 
 **Injectable and Non-Injectable Objects in Magneto 2**
